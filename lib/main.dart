@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testsdk/account/account_screen.dart';
 
 import 'package:testsdk/onboarding/onboardingscreen.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         
         useMaterial3: true,
       ),
-      home: OnboardingScreen(),
+      home: AccountScreen(),
     );
   }
 }
