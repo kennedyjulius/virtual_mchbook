@@ -1,16 +1,21 @@
-// ignore_for_file: must_be_immutable, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:testsdk/common/utils/colors.dart';
 import 'package:testsdk/common/widgets/custom_button.dart';
 import 'package:testsdk/common/widgets/custom_textwidget.dart';
 import 'package:testsdk/common/widgets/myform_field.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
+  SignupScreen({Key? key}) : super(key: key);
+
+  @override
+  _SignupScreenState createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
   TextEditingController _emailcontroller = TextEditingController();
   TextEditingController _passwordcontroller = TextEditingController();
   TextEditingController _usernamecontroller = TextEditingController();
-  SignupScreen({super.key});
+  bool _obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -23,27 +28,25 @@ class SignupScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 40,),
+              SizedBox(height: 40),
               CustomTextWidget(
-                  text: "Sign Up to continue",
-                  size: 22,
-                  color: ColorsContants.textColormain,
-                  fontWeight: FontWeight.bold),
-              SizedBox(
-                height: 40,
+                text: "Sign Up to continue",
+                size: 22,
+                color: ColorsContants.textColormain,
+                fontWeight: FontWeight.bold,
               ),
+              SizedBox(height: 40),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
                     CustomTextWidget(
-                        text: "Welcome back",
-                        size: 17,
-                        color: ColorsContants.textColorsubtitle,
-                        fontWeight: FontWeight.bold),
-                    SizedBox(
-                      width: 30,
+                      text: "Welcome back",
+                      size: 17,
+                      color: ColorsContants.textColorsubtitle,
+                      fontWeight: FontWeight.bold,
                     ),
+                    SizedBox(width: 30),
                     SizedBox(
                       height: 30,
                       width: 30,
@@ -52,79 +55,76 @@ class SignupScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-
+              SizedBox(height: 10),
               MyformField(
                 labelText: "Username",
                 hintText: "Enter Username",
                 controller: _usernamecontroller,
                 obscureText: false,
-                suffixIcon:
-                    IconButton(onPressed: () {}, icon: Icon(Icons.clear)),
+                suffixIcon: IconButton(
+                  onPressed: () => _usernamecontroller.clear(),
+                  icon: Icon(Icons.clear),
+                ),
                 prefixIcon: Icon(Icons.person),
               ),
-              SizedBox(
-                height: 10,
-              ),
-
-              //text field containing username
+              SizedBox(height: 10),
               MyformField(
                 labelText: "email",
                 hintText: "email address",
                 controller: _emailcontroller,
                 obscureText: false,
-                suffixIcon:
-                    IconButton(onPressed: () {}, icon: Icon(Icons.clear)),
+                suffixIcon: IconButton(
+                  onPressed: () => _emailcontroller.clear(),
+                  icon: Icon(Icons.clear),
+                ),
                 prefixIcon: Icon(Icons.email),
               ),
-              SizedBox(
-                height: 10,
-              ),
-
-              //password field
+              SizedBox(height: 10),
               MyformField(
                 labelText: "password",
                 hintText: "Enter Password",
                 controller: _passwordcontroller,
-                obscureText: true,
+                obscureText: _obscurePassword,
                 suffixIcon: IconButton(
-                    onPressed: () {}, icon: Icon(Icons.visibility_off)),
+                  onPressed: () {
+                    setState(() {
+                      _obscurePassword = !_obscurePassword;
+                    });
+                  },
+                  icon: Icon(_obscurePassword
+                      ? Icons.visibility_off
+                      : Icons.visibility),
+                ),
                 prefixIcon: Icon(Icons.password),
               ),
-              SizedBox(
-                height: 10,
+              SizedBox(height: 10),
+              TextButton(
+                onPressed: () {},
+                child: Text("Forgot Password? ..."),
               ),
-
-              TextButton(onPressed: () {}, child: Text("Forgot Password? ...")),
-              SizedBox(
-                height: 10,
-              ),
-
-              //custom button
+              SizedBox(height: 10),
               CustomButton(
                 text: "Sign up",
                 ontap: () {
                   print("you clicked me");
                 },
               ),
-              SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: 10),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CustomTextWidget(
-                      text: "Not a member yet ?",
-                      size: 14,
-                      color: ColorsContants.textColorsubtitle,
-                      fontWeight: FontWeight.w200),
-                  SizedBox(
-                    width: 20,
+                    text: "Not a member yet ?",
+                    size: 14,
+                    color: ColorsContants.textColorsubtitle,
+                    fontWeight: FontWeight.w200,
                   ),
-                  TextButton(onPressed: () {}, child: Text("Login here...")),
+                  SizedBox(width: 20),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text("Login here..."),
+                  ),
                 ],
               ),
             ],

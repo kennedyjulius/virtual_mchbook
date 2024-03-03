@@ -10,6 +10,8 @@ class LoginScreen extends StatelessWidget {
   TextEditingController _emailcontroller = TextEditingController();
   TextEditingController _passwordcontroller = TextEditingController();
 
+  bool _obsecureText = true;
+
   LoginScreen({super.key});
 
   @override
@@ -73,9 +75,12 @@ class LoginScreen extends StatelessWidget {
                 labelText: "email",
                 hintText: "email address",
                 controller: _emailcontroller,
-                obscureText: false,
-                suffixIcon:
-                    IconButton(onPressed: () {}, icon: Icon(Icons.clear)),
+                obscureText: _obsecureText,
+                suffixIcon: IconButton(
+                    onPressed: () {
+                      _emailcontroller.clear();
+                    },
+                    icon: Icon(Icons.clear)),
                 prefixIcon: Icon(Icons.email),
               ),
               SizedBox(
@@ -87,9 +92,16 @@ class LoginScreen extends StatelessWidget {
                 labelText: "password",
                 hintText: "Enter Password",
                 controller: _passwordcontroller,
-                obscureText: true,
+                obscureText: _obsecureText,
                 suffixIcon: IconButton(
-                    onPressed: () {}, icon: Icon(Icons.visibility_off)),
+                    onPressed: () {
+                      _obsecureText = !_obsecureText;
+                    },
+                    icon: Icon(_obsecureText
+                      ?Icons.visibility_off : 
+                      Icons.visibility
+                      )
+                      ),
                 prefixIcon: Icon(Icons.password),
               ),
               SizedBox(
@@ -124,7 +136,9 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     width: 20,
                   ),
-                  TextButton(onPressed: () {}, child: Text("Register here...")),
+                  TextButton(onPressed: () {
+                    
+                  }, child: Text("Register here...")),
                 ],
               ),
             ],

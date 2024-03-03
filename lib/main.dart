@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:testsdk/authentication/signup_screen.dart';
+
+import 'package:testsdk/onboarding/onboardingscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         
         useMaterial3: true,
       ),
-      home: SignupScreen(),
+      home: OnboardingScreen(),
     );
   }
 }
