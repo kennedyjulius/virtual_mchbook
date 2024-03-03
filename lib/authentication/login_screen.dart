@@ -1,6 +1,8 @@
 // ignore_for_file: must_be_immutable, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:testsdk/authentication/signup_screen.dart';
 import 'package:testsdk/common/utils/colors.dart';
 import 'package:testsdk/common/widgets/custom_button.dart';
 import 'package:testsdk/common/widgets/custom_textwidget.dart';
@@ -98,10 +100,8 @@ class LoginScreen extends StatelessWidget {
                       _obsecureText = !_obsecureText;
                     },
                     icon: Icon(_obsecureText
-                      ?Icons.visibility_off : 
-                      Icons.visibility
-                      )
-                      ),
+                        ? Icons.visibility_off
+                        : Icons.visibility)),
                 prefixIcon: Icon(Icons.password),
               ),
               SizedBox(
@@ -136,9 +136,11 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     width: 20,
                   ),
-                  TextButton(onPressed: () {
-                    
-                  }, child: Text("Register here...")),
+                  TextButton(
+                      onPressed: () {
+                        Get.to(SignupScreen());
+                      },
+                      child: Text("Register here...")),
                 ],
               ),
             ],

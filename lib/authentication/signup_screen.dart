@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:testsdk/authentication/login_screen.dart';
 import 'package:testsdk/common/utils/colors.dart';
 import 'package:testsdk/common/widgets/custom_button.dart';
 import 'package:testsdk/common/widgets/custom_textwidget.dart';
@@ -16,6 +18,7 @@ class _SignupScreenState extends State<SignupScreen> {
   TextEditingController _passwordcontroller = TextEditingController();
   TextEditingController _usernamecontroller = TextEditingController();
   bool _obscurePassword = true;
+  bool _clearText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +66,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 obscureText: false,
                 suffixIcon: IconButton(
                   onPressed: () => _usernamecontroller.clear(),
-                  icon: Icon(Icons.clear),
+                  icon: Icon(_clearText ?Icons.clear : Icons.clear_outlined),
                 ),
                 prefixIcon: Icon(Icons.person),
               ),
@@ -122,7 +125,9 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   SizedBox(width: 20),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(LoginScreen());
+                    },
                     child: Text("Login here..."),
                   ),
                 ],

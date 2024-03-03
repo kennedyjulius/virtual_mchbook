@@ -4,7 +4,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:testsdk/authentication/signup_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({super.key});
+  const OnboardingScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,30 +12,31 @@ class OnboardingScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: IntroductionScreen(
         allowImplicitScrolling: true,
-        showBackButton: true,
         pages: [
           commonPageViewModel(
-              "Enjoy your day With you",
-              "You can kickstart your day with short amazing videos from our platform ",
-              "assets/breestfeeding.png"),
-          //page 2
+            "Enjoy your day With you",
+            "You can kickstart your day with short amazing videos from our platform",
+            "assets/breestfeeding.png",
+          ),
           commonPageViewModel(
-              "Are you tired from work ?.",
-              "Look not further @youtube we got your  happiness covered and well figured, kindly give us a tap today ...",
-              "assets/consultation.png"),
-          //page 3
+            "Are you tired from work?",
+            "Look no further @youtube we got your happiness covered and well figured, kindly give us a tap today",
+            "assets/consultation.png",
+          ),
           commonPageViewModel(
-              "Hey, Do you Dislike Ads ...?",
-              "We got you covered, we dont want to spam your happy moments with ads",
-              "assets/father&mother.png"),
+            "Hey, Do you Dislike Ads?",
+            "We got you covered, we dont want to spam your happy moments with ads",
+            "assets/father&mother.png",
+          ),
         ],
         dotsDecorator: DotsDecorator(
-            size: Size(5, 10),
-            activeColor: Colors.purple.shade100,
-            activeSize: Size(20, 10),
-            activeShape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            )),
+          size: Size(5, 10),
+          activeColor: Colors.purple.shade100,
+          activeSize: Size(20, 10),
+          activeShape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
         showDoneButton: true,
         done: Text(
           "Done",
@@ -49,17 +50,21 @@ class OnboardingScreen extends StatelessWidget {
           style: TextStyle(fontSize: 20),
         ),
         onDone: () {
-          Get.snackbar("Alert Message", "You have completed successful...");
-          Get.to(SignupScreen());
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => SignupScreen(),
+          ));
         },
         onSkip: () {
-          Get.offAll(SignupScreen());
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => SignupScreen(),
+          ));
         },
       ),
     );
   }
 
-  PageViewModel commonPageViewModel(title, bodyText, image) {
+  PageViewModel commonPageViewModel(
+      String title, String bodyText, String image) {
     return PageViewModel(
       title: title,
       body: bodyText,
@@ -67,7 +72,10 @@ class OnboardingScreen extends StatelessWidget {
       decoration: PageDecoration(
         pageColor: Colors.purple.shade700,
         titleTextStyle: TextStyle(
-            fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+          fontSize: 25,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
       ),
     );
   }
