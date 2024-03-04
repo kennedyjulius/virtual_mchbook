@@ -58,7 +58,7 @@ class _AccountScreenState extends State<AccountScreen> {
               subtitle: "User information",
               color: Colors.purple.shade100,
               icon: Icons.edit,
-              trailingIcon: Icon(Icons.arrow_forward)),
+              trailingIcon: Icon(Icons.arrow_forward_ios)),
           SizedBox(
             height: 5,
           ),
@@ -70,7 +70,7 @@ class _AccountScreenState extends State<AccountScreen> {
               subtitle: "identity verification",
               color: Colors.purple.shade100,
               icon: Icons.password,
-              trailingIcon: Icon(Icons.arrow_forward)),
+              trailingIcon: Icon(Icons.arrow_forward_ios)),
           SizedBox(
             height: 5,
           ),
@@ -82,7 +82,7 @@ class _AccountScreenState extends State<AccountScreen> {
               subtitle: "Change Location",
               color: Colors.purple.shade100,
               icon: Icons.location_on,
-              trailingIcon: Icon(Icons.arrow_forward)),
+              trailingIcon: Icon(Icons.arrow_forward_ios)),
           SizedBox(
             height: 5,
           ),
@@ -94,7 +94,7 @@ class _AccountScreenState extends State<AccountScreen> {
               subtitle: "Accredited by KMPDU",
               color: Colors.purple.shade100,
               icon: Icons.local_hospital,
-              trailingIcon: Icon(Icons.arrow_forward)),
+              trailingIcon: Icon(Icons.arrow_forward_ios)),
           SizedBox(
             height: 5,
           ),
@@ -104,9 +104,9 @@ class _AccountScreenState extends State<AccountScreen> {
               },
               title: "Log Out",
               subtitle: "Delete account",
-              color: Colors.purple.shade100,
+              color: Colors.red.shade200,
               icon: Icons.logout_outlined,
-              trailingIcon: Icon(Icons.arrow_forward)),
+              trailingIcon: Icon(Icons.arrow_forward_ios)),
           SizedBox(
             height: 5,
           ),

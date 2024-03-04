@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:testsdk/authentication/login_screen.dart';
 import 'package:testsdk/common/utils/colors.dart';
 import 'package:testsdk/common/widgets/custom_button.dart';
@@ -18,7 +18,7 @@ class _SignupScreenState extends State<SignupScreen> {
   TextEditingController _passwordcontroller = TextEditingController();
   TextEditingController _usernamecontroller = TextEditingController();
   bool _obscurePassword = true;
-  bool _clearText = true;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -65,8 +65,10 @@ class _SignupScreenState extends State<SignupScreen> {
                 controller: _usernamecontroller,
                 obscureText: false,
                 suffixIcon: IconButton(
-                  onPressed: () => _usernamecontroller.clear(),
-                  icon: Icon(_clearText ?Icons.clear : Icons.clear_outlined),
+                  onPressed: () {
+                    _usernamecontroller.clear();
+                  },
+                  icon: Icon(Icons.clear),
                 ),
                 prefixIcon: Icon(Icons.person),
               ),
@@ -113,24 +115,27 @@ class _SignupScreenState extends State<SignupScreen> {
                 },
               ),
               SizedBox(height: 10),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomTextWidget(
-                    text: "Not a member yet ?",
-                    size: 14,
-                    color: ColorsContants.textColorsubtitle,
-                    fontWeight: FontWeight.w200,
-                  ),
-                  SizedBox(width: 20),
-                  TextButton(
-                    onPressed: () {
-                      Get.to(LoginScreen());
-                    },
-                    child: Text("Login here..."),
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  children: [
+                    CustomTextWidget(
+                      text: "Already a member ?",
+                      size: 14,
+                      color: ColorsContants.textColorsubtitle,
+                      fontWeight: FontWeight.w200,
+                    ),
+                    SizedBox(width: 2),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => LoginScreen(),
+                        ));
+                      },
+                      child: Text("Login here..."),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

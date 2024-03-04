@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:testsdk/authentication/signup_screen.dart';
 
@@ -14,27 +16,28 @@ class OnboardingScreen extends StatelessWidget {
         allowImplicitScrolling: true,
         pages: [
           commonPageViewModel(
-            "Enjoy your day With you",
-            "You can kickstart your day with short amazing videos from our platform",
+            "Journey of Love and Care",
+            "Welcome to the MCH clinic, where every mother's journey is celebrated and supported. Together, we embark on a path filled with love, care, and endless possibilities for your child's well-being",
             "assets/breestfeeding.png",
           ),
           commonPageViewModel(
-            "Are you tired from work?",
-            "Look no further @youtube we got your happiness covered and well figured, kindly give us a tap today",
+            "Strength in Motherhood",
+            "In the embrace of our MCH clinic, mothers discover the strength within themselves to nurture and protect their children. Here, we honor the resilience and dedication of every mother",
             "assets/consultation.png",
           ),
           commonPageViewModel(
-            "Hey, Do you Dislike Ads?",
-            "We got you covered, we dont want to spam your happy moments with ads",
+            "Building Healthier Communities",
+            "At MCH clinics, we're not just building healthier families – we're building stronger communities. Join us as we unite mothers in a shared mission to create brighter, healthier futures for all",
             "assets/father&mother.png",
           ),
         ],
         dotsDecorator: DotsDecorator(
+          
           size: Size(5, 10),
-          activeColor: Colors.purple.shade100,
-          activeSize: Size(20, 10),
+          activeColor: Colors.purple,
+          activeSize: Size(10, 20),
           activeShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(10),
           ),
         ),
         showDoneButton: true,
@@ -70,12 +73,17 @@ class OnboardingScreen extends StatelessWidget {
       body: bodyText,
       image: Image.asset(image),
       decoration: PageDecoration(
-        pageColor: Colors.purple.shade700,
+        pageColor: Colors.white,
         titleTextStyle: TextStyle(
           fontSize: 25,
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: Colors.black,
         ),
+        bodyTextStyle: TextStyle(
+         fontSize: 15,
+          fontWeight: FontWeight.w200,
+          color: Colors.black54, 
+        )
       ),
     );
   }

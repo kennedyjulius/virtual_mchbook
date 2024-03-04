@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:testsdk/authentication/signup_screen.dart';
 import 'package:testsdk/common/utils/colors.dart';
 import 'package:testsdk/common/widgets/custom_button.dart';
@@ -125,8 +125,6 @@ class LoginScreen extends StatelessWidget {
                 height: 10,
               ),
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CustomTextWidget(
                       text: "Don't have account yet ?",
@@ -134,13 +132,16 @@ class LoginScreen extends StatelessWidget {
                       color: ColorsContants.textColorsubtitle,
                       fontWeight: FontWeight.w200),
                   SizedBox(
-                    width: 20,
+                    width: 2,
                   ),
                   TextButton(
                       onPressed: () {
-                        Get.to(SignupScreen());
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SignupScreen(),
+                        ));
                       },
-                      child: Text("Register here...")),
+                      child: Text("Register here...")
+                      ),
                 ],
               ),
             ],

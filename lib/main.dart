@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:testsdk/account/account_screen.dart';
 
-import 'package:testsdk/onboarding/onboardingscreen.dart';
+import 'package:testsdk/common/widgets/nacscreen.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         
         useMaterial3: true,
       ),
-      home: AccountScreen(),
+      home: NavScreen(),
     );
   }
 }
