@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:testsdk/authentication/signup_screen.dart';
+import 'package:testsdk/common/widgets/nacscreen.dart';
 
 import 'package:testsdk/onboarding/onboardingscreen.dart';
 import 'package:testsdk/otherscreens/antenatal_screen.dart';
@@ -29,8 +30,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      //home: showHome ? SignupScreen() : OnboardingScreen(),
-      home: AntenatalProfileScreen(),
+      home: showHome ? NavScreen() : OnboardingScreen(),
+      //home: AntenatalProfileScreen(),
     );
   }
 }

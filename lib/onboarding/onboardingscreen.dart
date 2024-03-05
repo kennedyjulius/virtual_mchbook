@@ -23,17 +23,23 @@ class OnboardingScreen extends StatelessWidget {
           commonPageViewModel(
             "Journey of Love and Care",
             "Welcome to the MCH clinic, where every mother's journey is celebrated and supported. Together, we embark on a path filled with love, care, and endless possibilities for your child's well-being",
-            "assets/breestfeeding.png",
+            "assets/pregnantlady.png",
           ),
           commonPageViewModel(
             "Strength in Motherhood",
             "In the embrace of our MCH clinic, mothers discover the strength within themselves to nurture and protect their children. Here, we honor the resilience and dedication of every mother",
-            "assets/consultation.png",
+            "assets/mothersday.png",
           ),
           commonPageViewModel(
             "Building Healthier Communities",
             "At MCH clinics, we're not just building healthier families – we're building stronger communities. Join us as we unite mothers in a shared mission to create brighter, healthier futures for all",
-            "assets/father&mother.png",
+            "assets/babyshower.png",
+          ),
+
+            commonPageViewModel(
+            "Building Healthier Communities",
+            "At MCH clinics, we're not just building healthier families – we're building stronger communities. Join us as we unite mothers in a shared mission to create brighter, healthier futures for all",
+            "assets/babyequipments.png",
           ),
         ],
         dotsDecorator: DotsDecorator(

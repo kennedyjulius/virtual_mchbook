@@ -14,19 +14,23 @@ class AntenatalProfileScreen extends StatefulWidget {
 class _AntenatalProfileScreenState extends State<AntenatalProfileScreen> {
   final myItems = [
     Image.asset(
-      "assets/consultation.png",
+      "assets/babyequipments.png",
       fit: BoxFit.cover,
     ),
     Image.asset(
-      "assets/landingpage.png",
+      "assets/babyshower.png",
       fit: BoxFit.cover,
     ),
     Image.asset(
-      "assets/fathermother.png",
+      "assets/holdingbaby.png",
       fit: BoxFit.cover,
     ),
     Image.asset(
-      "assets/profile.png",
+      "assets/mothersday.png",
+      fit: BoxFit.cover,
+    ),
+    Image.asset(
+      "assets/pregnantlady.png",
       fit: BoxFit.cover,
     ),
   ];
@@ -38,6 +42,7 @@ class _AntenatalProfileScreenState extends State<AntenatalProfileScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            SizedBox(height: 10,),
             CarouselSlider(
               items: myItems
                   .map((item) => Padding(
@@ -48,7 +53,7 @@ class _AntenatalProfileScreenState extends State<AntenatalProfileScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
-                          color: Colors.red,
+                          color: Colors.purple.shade200,
                           //strokeAlign: 2.0,
                           //: 2.0
                         ),
@@ -82,7 +87,7 @@ class _AntenatalProfileScreenState extends State<AntenatalProfileScreen> {
                 dotWidth: 8,
                 spacing: 5,
                 dotColor: Colors.grey.shade200,
-                activeDotColor: Colors.purpleAccent,
+                activeDotColor: Colors.blueAccent,
                 paintStyle: PaintingStyle.fill,
               ),
             )
