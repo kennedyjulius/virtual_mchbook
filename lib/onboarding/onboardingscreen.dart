@@ -3,10 +3,15 @@
 import 'package:flutter/material.dart';
 
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:testsdk/authentication/signup_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({Key? key});
+  //final bool showHome;
+
+  const OnboardingScreen({Key? key, 
+  //required this.showHome
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +37,6 @@ class OnboardingScreen extends StatelessWidget {
           ),
         ],
         dotsDecorator: DotsDecorator(
-          
           size: Size(5, 10),
           activeColor: Colors.purple,
           activeSize: Size(10, 20),
@@ -52,10 +56,12 @@ class OnboardingScreen extends StatelessWidget {
           "Skip",
           style: TextStyle(fontSize: 20),
         ),
-        onDone: () {
+        onDone: () async {
           Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (context) => SignupScreen(),
           ));
+          final prefs = await SharedPreferences.getInstance();
+          prefs.setBool('showHome', true);
         },
         onSkip: () {
           Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -73,18 +79,17 @@ class OnboardingScreen extends StatelessWidget {
       body: bodyText,
       image: Image.asset(image),
       decoration: PageDecoration(
-        pageColor: Colors.white,
-        titleTextStyle: TextStyle(
-          fontSize: 25,
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
-        ),
-        bodyTextStyle: TextStyle(
-         fontSize: 15,
-          fontWeight: FontWeight.w200,
-          color: Colors.black54, 
-        )
-      ),
+          pageColor: Colors.white,
+          titleTextStyle: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+          bodyTextStyle: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w200,
+            color: Colors.black54,
+          )),
     );
   }
 }

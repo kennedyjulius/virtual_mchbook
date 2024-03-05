@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:testsdk/authentication/signup_screen.dart';
 
-import 'package:testsdk/common/widgets/nacscreen.dart';
+import 'package:testsdk/onboarding/onboardingscreen.dart';
+import 'package:testsdk/otherscreens/antenatal_screen.dart';
 
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-
-void main() {
-  runApp(const MyApp());
+  final prefs = await SharedPreferences.getInstance();
+  final showHome = prefs.getBool('showHome') ?? false;
+  runApp(MyApp(showHome: showHome));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool showHome;
+  const MyApp({
+    Key? key,
+    required this.showHome,
+  }) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -18,11 +27,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        
         useMaterial3: true,
       ),
-      home: NavScreen(),
+      //home: showHome ? SignupScreen() : OnboardingScreen(),
+      home: AntenatalProfileScreen(),
     );
   }
 }
 
+//logout button
+// final prefs = await SharedPreferences.getInstance();
+// prefs.setBool('showHome', false);
