@@ -3,6 +3,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:testsdk/common/utils/colors.dart';
+import 'package:testsdk/common/widgets/custom_textwidget.dart';
 
 class AntenatalProfileScreen extends StatefulWidget {
   const AntenatalProfileScreen({super.key});
@@ -42,6 +44,11 @@ class _AntenatalProfileScreenState extends State<AntenatalProfileScreen> {
       body: SafeArea(
         child: Column(
           children: [
+                  CustomTextWidget(
+                  text: "Recommended for you ... ",
+                  size: 22,
+                  color: ColorsContants.textColormain,
+                  fontWeight: FontWeight.bold),
             SizedBox(height: 10,),
             CarouselSlider(
               items: myItems
