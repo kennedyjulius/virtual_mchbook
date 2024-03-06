@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: showHome ? NavScreen() : OnboardingScreen(),
-      //home: AntenatalProfileScreen(),
+      //home: showHome ? NavScreen() : OnboardingScreen(),
+      home: SignupScreen(),
     );
   }
 }

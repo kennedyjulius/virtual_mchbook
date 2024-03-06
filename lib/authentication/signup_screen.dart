@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'package:local_auth/local_auth.dart';
+import 'package:testsdk/authentication/local_auth.dart';
 import 'package:testsdk/authentication/login_screen.dart';
 import 'package:testsdk/common/utils/colors.dart';
 import 'package:testsdk/common/widgets/custom_button.dart';
 import 'package:testsdk/common/widgets/custom_textwidget.dart';
 import 'package:testsdk/common/widgets/myform_field.dart';
+import 'package:testsdk/otherscreens/antenatal_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   SignupScreen({Key? key}) : super(key: key);
@@ -14,11 +17,78 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  TextEditingController _emailcontroller = TextEditingController();
-  TextEditingController _passwordcontroller = TextEditingController();
-  TextEditingController _usernamecontroller = TextEditingController();
+  final LocalAuthentication _auth = LocalAuthentication();
   bool _obscurePassword = true;
-  
+
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  final LocalAuthentication auth = LocalAuthentication();
+  SupportState supportState = SupportState.unknown;
+
+  List<BiometricType>? availableBiometrics;
+
+  void initState() {
+    super.initState();
+    checkBiometric();
+    getAvailableBiometrics();
+    auth.isDeviceSupported().then((bool isSupported) => setState(() =>
+        supportState =
+            isSupported ? SupportState.supported : SupportState.unSupported));
+  }
+
+  Future<void> checkBiometric() async {
+    late bool canCheckBiometric;
+    try {
+      canCheckBiometric = await auth.canCheckBiometrics;
+      print("Biometrics supported: $canCheckBiometric");
+    } catch (e) {
+      print(e);
+      canCheckBiometric = false;
+    }
+  }
+
+  Future<void> getAvailableBiometrics() async {
+    late List<BiometricType> biometricTypes;
+    try {
+      biometricTypes = await auth.getAvailableBiometrics();
+      print("Supported biometrics $biometricTypes");
+    } catch (e) {
+      print(e);
+    }
+    if (!mounted) {
+      return;
+    }
+    setState(() {
+      availableBiometrics = biometricTypes;
+    });
+  }
+
+  Future<void> authenticateWithBiometrics() async {
+    try {
+      final authenticated = await auth.authenticate(
+          localizedReason: "Authenticate with fingerprint or Face ID",
+          options: AuthenticationOptions(
+            stickyAuth: true,
+            biometricOnly: true,
+          ));
+      if (!mounted) {
+        return;
+      }
+
+      if (authenticated) {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AntenatalProfileScreen(),
+            ));
+      }
+    } catch (e) {
+      print(e);
+      return;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,34 +132,32 @@ class _SignupScreenState extends State<SignupScreen> {
               MyformField(
                 labelText: "Username",
                 hintText: "Enter Username",
-                controller: _usernamecontroller,
                 obscureText: false,
+                controller: _usernameController,
                 suffixIcon: IconButton(
-                  onPressed: () {
-                    _usernamecontroller.clear();
-                  },
+                  onPressed: () => _usernameController.clear(),
                   icon: Icon(Icons.clear),
                 ),
                 prefixIcon: Icon(Icons.person),
               ),
               SizedBox(height: 10),
               MyformField(
-                labelText: "email",
-                hintText: "email address",
-                controller: _emailcontroller,
+                labelText: "Email",
+                hintText: "Email Address",
                 obscureText: false,
+                controller: _emailController,
                 suffixIcon: IconButton(
-                  onPressed: () => _emailcontroller.clear(),
+                  onPressed: () => _emailController.clear(),
                   icon: Icon(Icons.clear),
                 ),
                 prefixIcon: Icon(Icons.email),
               ),
               SizedBox(height: 10),
               MyformField(
-                labelText: "password",
+                labelText: "Password",
                 hintText: "Enter Password",
-                controller: _passwordcontroller,
                 obscureText: _obscurePassword,
+                controller: _passwordController,
                 suffixIcon: IconButton(
                   onPressed: () {
                     setState(() {
@@ -136,6 +204,11 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ],
                 ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: authenticateWithBiometrics,
+                child: Text('Authenticate with Biometrics'),
               ),
             ],
           ),
