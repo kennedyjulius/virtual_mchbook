@@ -34,9 +34,11 @@ dependencies:
     sdk: flutter
   get: ^4.6.6
   google_nav_bar: ^5.0.6
+  google_sign_in: ^6.2.1
   introduction_screen: ^3.1.12
   local_auth: ^2.2.0
   shared_preferences: ^2.2.2
+  sign_button: ^2.0.6
   smooth_page_indicator: ^1.1.0
 
 dev_dependencies:

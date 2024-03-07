@@ -5,7 +5,10 @@ import 'package:testsdk/common/widgets/accounts_listtile.dart';
 import 'package:testsdk/common/widgets/custom_textwidget.dart';
 
 class AccountScreen extends StatefulWidget {
-  const AccountScreen({super.key});
+  //final UserDetails userDetails;
+  const AccountScreen({super.key,  
+  //this.userDetail
+  });
 
   @override
   State<AccountScreen> createState() => _AccountScreenState();
@@ -31,6 +34,8 @@ class _AccountScreenState extends State<AccountScreen> {
             backgroundColor: Colors.grey.withOpacity(0.3),
             foregroundImage: AssetImage("assets/profile.jpg"),
           ),
+          // Text("Welcome, ${widget.userDetails.name}"),
+          // Text("Email, ${widget.userDetails.email}"),
           SizedBox(
             height: 10,
           ),
@@ -114,4 +119,11 @@ class _AccountScreenState extends State<AccountScreen> {
       ),
     );
   }
+}
+
+class UserDetails {
+  final String name;
+  final String email;
+
+  UserDetails({required this.name, required this.email});
 }
