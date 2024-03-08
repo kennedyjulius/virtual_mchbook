@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "68789805084",
+    "project_id": "handbook-ebad8",
+    "storage_bucket": "handbook-ebad8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68789805084:android:9f80624fadc3f0e7d3ffd9",
+        "android_client_info": {
+          "package_name": "com.example.testsdk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByxzlFYVLGq2xlk_eiDOFZ86C-oWFvf0A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
