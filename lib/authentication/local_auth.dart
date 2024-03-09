@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
-import 'package:testsdk/otherscreens/antenatal_screen.dart';
+import 'package:testsdk/otherscreens/maternal%20_screen.dart';
 
 class LocalAuth extends StatefulWidget {
   const LocalAuth({super.key});
@@ -75,7 +75,7 @@ class _LocalAuthState extends State<LocalAuth> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => AntenatalProfileScreen(),
+              builder: (context) => MaternalScreen(),
             ));
       }
     } catch (e) {

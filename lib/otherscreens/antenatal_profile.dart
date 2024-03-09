@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:testsdk/common/utils/custom_containerutil.dart';
+import 'package:testsdk/otherscreens/child_bitrh.dart';
 
 class AntenatalProfile extends StatelessWidget {
   AntenatalProfile({super.key});
@@ -11,11 +13,13 @@ class AntenatalProfile extends StatelessWidget {
       //AppBar
       appBar: AppBar(
         centerTitle: true,
+        title:const  Text('Physical & Antenatal ',style: TextStyle(color: Colors.white,fontSize: 25,fontStyle: FontStyle.italic),),
         backgroundColor: Colors.purple,
-        title: const Text(
-          'TEST DATA RESULTS',
-          style: TextStyle(color: Colors.white),
-        ),
+        leading: GestureDetector(
+          onTap: (){
+            Get.back();
+          },
+        child: const Icon(Icons.arrow_back,color: Colors.white,size: 35)),
       ),
       backgroundColor: Colors.white,
       body: Column(
@@ -455,21 +459,26 @@ class AntenatalProfile extends StatelessWidget {
                             const SizedBox(
                               height: 30,
                             ),
-                            Container(
-                              height: 50,
-                              width: 160,
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(25)),
-                                  color: Colors.purple),
-                              child: const Center(
-                                  child: Text(
-                                'Next',
-                                style: TextStyle(
-                                    fontSize: 28,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.white),
-                              )),
+                            GestureDetector(
+                              onTap: (){
+                                Get.to(ChildBirth());
+                              },
+                              child: Container(
+                                height: 50,
+                                width: 160,
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(25)),
+                                    color: Colors.purple),
+                                child: const Center(
+                                    child: Text(
+                                  'Next',
+                                  style: TextStyle(
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.white),
+                                )),
+                              ),
                             )
                             //End of the container containing Antenatal profile data
                           ],

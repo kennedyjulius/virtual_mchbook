@@ -1,23 +1,20 @@
 // ignore_for_file: must_be_immutable, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:testsdk/authentication/auth_controller.dart';
-import 'package:testsdk/authentication/reset%20password.dart';
 
-import 'package:testsdk/authentication/signup_screen.dart';
 import 'package:testsdk/common/utils/colors.dart';
 import 'package:testsdk/common/widgets/custom_button.dart';
 import 'package:testsdk/common/widgets/custom_textwidget.dart';
 import 'package:testsdk/common/widgets/myform_field.dart';
 
-class LoginScreen extends StatelessWidget {
+class ResetPassword extends StatelessWidget {
   TextEditingController emailcontroller = TextEditingController();
-  TextEditingController passwordcontroller = TextEditingController();
+ 
 
-  bool _obsecureText = true;
+ 
 
-  LoginScreen({super.key});
+  ResetPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +29,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               SizedBox(height: 160,),
               CustomTextWidget(
-                  text: "We missed you ",
+                  text: " Reset your password ",
                   size: 22,
                   color: ColorsContants.textColormain,
                   fontWeight: FontWeight.bold),
@@ -44,7 +41,7 @@ class LoginScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     CustomTextWidget(
-                        text: "Welcome back",
+                        text: "Reset password",
                         size: 17,
                         color: ColorsContants.textColorsubtitle,
                         fontWeight: FontWeight.bold),
@@ -80,67 +77,17 @@ class LoginScreen extends StatelessWidget {
                 height: 10,
               ),
 
-              //password field
-              MyformField(
-                labelText: "password",
-                hintText: "Enter Password",
-                controller: passwordcontroller,
-                obscureText: _obsecureText,
-                suffixIcon: IconButton(
-                    onPressed: () {
-                      _obsecureText = !_obsecureText;
-                    },
-                    icon: Icon(_obsecureText
-                        ? Icons.visibility_off
-                        : Icons.visibility)),
-                prefixIcon: Icon(Icons.password),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextButton(
-                onPressed: () {
-                  Get.to(ResetPassword());
-                },
-                child: Text("Forgot Password? ..."),
-              ),
-
-              // TextButton(onPressed: () {
-
-              // }, child: Text("Forgot Password? ...")
-              // ),
-              // SizedBox(height: 10,),
-
-              //custom button
+              
               CustomButton(
-                text: "Login",
+                text: "Reset Password",
                 ontap: (){
-                AuthController.instance.login(emailcontroller.text.trim(), passwordcontroller.text.trim());
+                AuthController.instance.resetPassword(emailcontroller.text.trim());
               },
               ),
               SizedBox(
                 height: 10,
               ),
-              Row(
-                children: [
-                  CustomTextWidget(
-                      text: "Don't have account yet ?",
-                      size: 14,
-                      color: ColorsContants.textColorsubtitle,
-                      fontWeight: FontWeight.w200),
-                  SizedBox(
-                    width: 2,
-                  ),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SignupScreen(),
-                        ));
-                      },
-                      child: Text("Register here...")
-                      ),
-                ],
-              ),
+             
             ],
           ),
         ),

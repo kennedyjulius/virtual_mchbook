@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:testsdk/account/account_screen.dart';
-import 'package:testsdk/authentication/login_screen.dart';
 import 'package:testsdk/authentication/signup_screen.dart';
 import 'package:testsdk/onboarding/onboardingscreen.dart';
-import 'package:testsdk/otherscreens/antenatal_screen.dart';
 
 
 class NavScreen extends StatefulWidget {
@@ -27,7 +25,7 @@ class _NavScreenState extends State<NavScreen> {
   final List<Widget> _pages =[
    OnboardingScreen(),
    SignupScreen(),
-   AntenatalProfileScreen(),
+  
    AccountScreen()
   ];
   
