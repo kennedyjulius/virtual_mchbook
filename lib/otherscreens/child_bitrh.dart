@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:testsdk/common/utils/custom_containerutil.dart';
 
 class ChildBirth extends StatelessWidget {
@@ -10,12 +11,14 @@ class ChildBirth extends StatelessWidget {
     return Scaffold(
       //AppBar
       appBar: AppBar(
+        title:const  Text('Child Birth',style: TextStyle(color: Colors.white,fontSize: 30,fontStyle: FontStyle.italic),),
         centerTitle: true,
         backgroundColor: Colors.purple,
-        title: const Text(
-          'TEST DATA RESULTS',
-          style: TextStyle(color: Colors.white),
-        ),
+        leading: GestureDetector(
+          onTap: (){
+            Get.back();
+          },
+        child: const Icon(Icons.arrow_back,color: Colors.white,size: 35)),
       ),
       backgroundColor: Colors.white,
       body: Column(
@@ -114,7 +117,7 @@ class ChildBirth extends StatelessWidget {
                                                   height: 20,
                                                   width: double.maxFinite,
                                                   child: Text(
-                                                      data['Blood group'] ??
+                                                      data['HIV tested'] ??
                                                           '')),
                                             )
                                           ],
@@ -132,7 +135,7 @@ class ChildBirth extends StatelessWidget {
                                         const CustomContainer(
                                           height: 20,
                                           width: 180,
-                                          child: Text('Reactive')),
+                                          child: Text('')),
                                           const SizedBox(height: 10,),
                                         Row(
                                           children: [
@@ -306,7 +309,7 @@ class ChildBirth extends StatelessWidget {
                                         const SizedBox(height: 10,),
                                         Row(
                                           children: [
-                                            const Text('Bitrh Weight gms:',
+                                            const Text('Birth Weight gms:',
                                                 style: TextStyle(
                                                     fontWeight:
                                                         FontWeight.w600)),
@@ -318,7 +321,7 @@ class ChildBirth extends StatelessWidget {
                                                   height: 20,
                                                   width: double.maxFinite,
                                                   child: Text(
-                                                      data['Date given'] ??
+                                                      data['birth weight'] ??
                                                           '')),
                                             ),
                                            
@@ -339,7 +342,7 @@ class ChildBirth extends StatelessWidget {
                                                   height: 20,
                                                   width: double.maxFinite,
                                                   child: Text(
-                                                      data['Date given'] ??
+                                                      data['birth length'] ??
                                                           '')),
                                             ),
                                            
@@ -360,7 +363,7 @@ class ChildBirth extends StatelessWidget {
                                                   height: 20,
                                                   width: double.maxFinite,
                                                   child: Text(
-                                                      data['Date given'] ??
+                                                      data['head circumfrence'] ??
                                                           '')),
                                             ),
                                            
@@ -381,7 +384,7 @@ class ChildBirth extends StatelessWidget {
                                                   height: 20,
                                                   width: double.maxFinite,
                                                   child: Text(
-                                                      data['Date given'] ??
+                                                      data['place of birth'] ??
                                                           '')),
                                             ),
                                            
@@ -397,22 +400,7 @@ class ChildBirth extends StatelessWidget {
                             const SizedBox(
                               height: 30,
                             ),
-                            Container(
-                              height: 50,
-                              width: 160,
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(25)),
-                                  color: Colors.purple),
-                              child: const Center(
-                                  child: Text(
-                                'Next',
-                                style: TextStyle(
-                                    fontSize: 28,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.white),
-                              )),
-                            )
+                            
                             //End of the container containing Antenatal profile data
                           ],
                         ),

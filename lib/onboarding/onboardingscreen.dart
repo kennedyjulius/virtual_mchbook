@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:testsdk/authentication/login_screen.dart';
 import 'package:testsdk/authentication/signup_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -65,14 +66,14 @@ class OnboardingScreen extends StatelessWidget {
           ),
           onDone: () async {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => SignupScreen(),
+              builder: (context) => LoginScreen(),
             ));
             final prefs = await SharedPreferences.getInstance();
             prefs.setBool('showHome', true);
           },
           onSkip: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => SignupScreen(),
+              builder: (context) => LoginScreen(),
             ));
           },
         ),

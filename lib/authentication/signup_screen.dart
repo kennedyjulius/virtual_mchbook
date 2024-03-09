@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:sign_button/constants.dart';
 import 'package:sign_button/create_button.dart';
+import 'package:testsdk/authentication/auth_controller.dart';
 
 import 'package:testsdk/authentication/login_screen.dart';
 import 'package:testsdk/common/utils/colors.dart';
@@ -12,7 +13,7 @@ import 'package:testsdk/common/widgets/custom_button.dart';
 import 'package:testsdk/common/widgets/custom_textwidget.dart';
 import 'package:testsdk/common/widgets/myform_field.dart';
 import 'package:testsdk/controllers/authentication_controller.dart';
-import 'package:testsdk/otherscreens/antenatal_screen.dart';
+import 'package:testsdk/otherscreens/maternal%20_screen.dart';
 
 enum SupportState {
   unknown,
@@ -31,9 +32,9 @@ class _SignupScreenState extends State<SignupScreen> {
   final LocalAuthentication auth = LocalAuthentication();
   bool _obscurePassword = true;
 
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController usernameController= TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   //final LocalAuthentication auth = LocalAuthentication();
   SupportState supportState = SupportState.unknown;
@@ -92,7 +93,7 @@ class _SignupScreenState extends State<SignupScreen> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => AntenatalProfileScreen(),
+              builder: (context) => MaternalScreen(),
             ));
       }
     } catch (e) {
@@ -147,9 +148,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 labelText: "Username",
                 hintText: "Enter Username",
                 obscureText: false,
-                controller: _usernameController,
+                controller: usernameController,
                 suffixIcon: IconButton(
-                  onPressed: () => _usernameController.clear(),
+                  onPressed: () => usernameController.clear(),
                   icon: Icon(Icons.clear),
                 ),
                 prefixIcon: Icon(Icons.person),
@@ -159,9 +160,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 labelText: "Email",
                 hintText: "Email Address",
                 obscureText: false,
-                controller: _emailController,
+                controller: emailController,
                 suffixIcon: IconButton(
-                  onPressed: () => _emailController.clear(),
+                  onPressed: () => emailController.clear(),
                   icon: Icon(Icons.clear),
                 ),
                 prefixIcon: Icon(Icons.email),
@@ -171,7 +172,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 labelText: "Password",
                 hintText: "Enter Password",
                 obscureText: _obscurePassword,
-                controller: _passwordController,
+                controller: passwordController,
                 suffixIcon: IconButton(
                   onPressed: () {
                     setState(() {
@@ -185,16 +186,16 @@ class _SignupScreenState extends State<SignupScreen> {
                 prefixIcon: Icon(Icons.password),
               ),
               SizedBox(height: 10),
-              TextButton(
-                onPressed: () {},
-                child: Text("Forgot Password? ..."),
-              ),
+              
               SizedBox(height: 10),
               CustomButton(
                 text: "Sign up",
                 ontap: () {
-                  print("you clicked me");
-                },
+                AuthController.instance.register(
+                    usernameController.text.trim(),
+                    emailController.text.trim(),
+                    passwordController.text.trim());
+              },
               ),
               SizedBox(height: 10),
               Padding(

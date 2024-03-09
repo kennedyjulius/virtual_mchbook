@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: '>=3.2.1 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -36,9 +36,13 @@ dependencies:
   google_nav_bar: ^5.0.6
   google_sign_in: ^6.2.1
   introduction_screen: ^3.1.12
-  local_auth: ^2.2.0
+  local_auth: ^2.1.8
   shared_preferences: ^2.2.2
   sign_button: ^2.0.6
+  firebase_auth: ^4.17.4
+  firebase_core: ^2.25.4
+  cloud_firestore: ^4.15.5
+  flutter_easyloading: ^3.0.5
   smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
